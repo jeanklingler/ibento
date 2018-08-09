@@ -40,7 +40,7 @@ python -m ibento.worker send_email
 
 In the last one, let's publish messages on this `interesting_event` routing key:
 ```bash
-python -m ibento.worker 'Hello World!'
+python -m ibento.publisher 'Hello World!'
 ```
 
 Both workers should handle the message once on their own queue and ack it!
