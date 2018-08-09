@@ -18,9 +18,9 @@ def listen_to_event(queue_name: str, callback: Callable):
         bindings = [binding(some_exchange, routing_key=EVENT_KEY)]
         queue = Queue(queue_name, exchange=some_exchange, routing_key=EVENT_KEY, bindings=bindings)
         with Consumer(conn, [queue], callbacks=[callback], auto_declare=True):
-            print(f'>>> Listening to [{queue_name}]')
+            print(f'>>> [{queue_name}] Listening to "{EVENT_KEY}" routing key')
             try:
                 while True:
                     conn.drain_events()
             except (KeyboardInterrupt, SystemExit):
-                print(f'>>> Stopped listening on {queue_name}')
+                print(f'>>> [{queue_name}] Stopped listening to "{EVENT_KEY}"')

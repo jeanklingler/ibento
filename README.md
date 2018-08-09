@@ -30,12 +30,12 @@ Open 3 shells, make sure to activate the `venv` virtual env in it.
 
 In the first shell, let's start a worker listening on the `interesting_event` routing key and updating some stats:
 ```bash
-python -m ibento.worker update_stats
+python -m ibento.update_stats_worker
 ```
 
 In the second shell, let's start another worker listening on the same `interesting_event` routing key but sending an email:
 ```bash
-python -m ibento.worker send_email
+python -m ibento.send_email_worker
 ```
 
 In the last one, let's publish messages on this `interesting_event` routing key:
